@@ -1,11 +1,10 @@
-import { AppBar, Toolbar, Typography, Container, Select, MenuItem, createTheme, ThemeProvider } from "@mui/material";
-import { useState } from "react";
+import { AppBar, Toolbar, Container, Select, MenuItem, createTheme, ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../context/CryptoContextProvider";
 
 
 const Header = () => {
-    const {currency, setCurrency} = CryptoState("INR");
+    const { currency, setCurrency } = CryptoState("INR");
 
     const navigate = useNavigate();
 
@@ -22,12 +21,15 @@ const Header = () => {
         <ThemeProvider theme={darkTheme}>
             <div>
                 <AppBar color="transparent" position="static">
-                    <Container>
-                        <Toolbar className="flex justify-between">
-                            <h2
-                                className="font-bold text-xl text-[#FFD700] cursor-pointer"
-                                onClick={() => navigate("/")}
-                            >Crypto Tracker</h2>
+                    <Container className="!p-0">
+                        <Toolbar className="flex justify-between !p-0">
+                            <div>
+                                <h2
+                                    className="font-bold text-xl text-[#FFD700] cursor-pointer"
+                                    onClick={() => navigate("/")}
+                                >Crypto Tracker</h2>
+                            </div>
+
                             <Select
                                 variant="outlined"
                                 style={{

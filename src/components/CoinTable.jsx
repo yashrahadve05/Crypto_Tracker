@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { ThemeProvider } from '@emotion/react';
-import { createTheme, LinearProgress } from '@mui/material';
+import { useEffect, useState } from "react";
+import { LinearProgress } from '@mui/material';
 import { CryptoState } from "../context/CryptoContextProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -10,6 +10,8 @@ export function numberWithCommas(x) {
 
 
 const CoinTable = (props) => {
+
+    let navigate = useNavigate();
 
     const [coin, setCoin] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -56,7 +58,6 @@ const CoinTable = (props) => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 
@@ -84,7 +85,7 @@ const CoinTable = (props) => {
                         const profit = coin.price_change_percentage_24h > 0;
 
                         return (
-                            <tr key={coin.id} className="cursor-pointer border-b-2 border-gray-500 bg-zinc-700 hover:bg-zinc-600">
+                            <tr key={coin.id} onClick={() => navigate(`/coins/${coin.id}`)} className="cursor-pointer border-b-2 border-gray-500 bg-zinc-700 hover:bg-zinc-600">
                                 <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex flex-row gap-1.5">
                                     <img src={coin.image} className="w-12" alt={coin.name} />
                                     <span>
