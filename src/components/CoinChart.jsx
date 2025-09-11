@@ -68,10 +68,6 @@ const CoinChart = ({ coin }) => {
     ];
 
     const id = coin?.id;
-    console.log(id)
-    console.log(currency);
-    console.log(days);
-    console.log(coin?.market_data.last_updated.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
 
 
 

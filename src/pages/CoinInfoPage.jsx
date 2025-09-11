@@ -45,8 +45,6 @@ const CoinInfoPage = () => {
         fetchCoinInfo();
     }, [currency]);
 
-    console.log(coin?.id);
-
     if (loading && !coin) return (
         <div>
             <LinearProgress />
@@ -72,12 +70,6 @@ const CoinInfoPage = () => {
     const Change_30D = coin?.market_data.price_change_percentage_30d > 0;
     const Change_ATH = coin?.market_data.ath_change_percentage[currency] > 0;
     const Change_ATL = coin?.market_data.atl_change_percentage[currency] > 0;
-    console.log("ATL");
-    
-    console.log(Change_ATL);
-    
-
-    // const ATH_Change = coin?.market_data.ath_change_percentage;
 
 
     return (
@@ -199,15 +191,14 @@ const CoinInfoPage = () => {
                             <span className="text-lg text-center m-auto ">
                                 {symbol} {numberWithCommas(coin?.market_data.atl[currency.toLowerCase()]?.toString() || "N/A")}
                             </span>
-                            {/* <span className={`text-sm tracking-wide ${Change_ATL ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{Change_ATL && "+"} {coin?.market_data.atl_change_percentage[currency.toLowerCase()]?.toFixed(2)} %</span> */}
                             <span className={`text-sm tracking-wide ${Change_ATL ? "text-[#00FF00]" : "text-[#FF0000]"}`}>
-      {Change_ATL && "+"}{coin?.market_data.atl_change_percentage[currency.toLowerCase()]?.toFixed(2)}%
-    </span>
+                                {Change_ATL && "+"}{coin?.market_data.atl_change_percentage[currency.toLowerCase()]?.toFixed(2)}%
+                            </span>
                         </div>
                     </div>
                 </div>
                 <span className="flex flex-row gap-1 border-2 border-slate-600 rounded-md p-4 font-medium bg-slate-800 w-[95%] text-left">Description : {parse(coin?.description?.en || "No description available.")}
-</span>
+                </span>
             </div>
         </div>
     );
