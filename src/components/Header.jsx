@@ -19,9 +19,9 @@ const Header = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <div>
+            <div >
                 <AppBar color="transparent" position="static">
-                    <Container className="!p-0">
+                    <Container className="max-sm:p-3 max-md:p-4">
                         <Toolbar className="flex justify-between !p-0">
                             <div>
                                 <h2

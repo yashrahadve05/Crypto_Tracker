@@ -33,7 +33,7 @@ export function toIndianTime(Time) {
         hour: "numeric",
         minute: "2-digit",
         hour12: true,
-        timeZone: "Asia/Kolkata" // ✅ ensures IST if you’re in India
+        timeZone: "Asia/Kolkata"
     });
 }
 
@@ -113,7 +113,7 @@ const CoinChart = ({ coin }) => {
 
 
     return (
-        <div className="w-[95%]">
+        <div className="w-[95%] max-md:w-[98%] max-sm:w-[96%]">
             <Line
                 className="h-full w-full"
                 data={{
@@ -143,7 +143,10 @@ const CoinChart = ({ coin }) => {
                 }}
             />
             <div className="flex justify-between w-full mt-5">
-                <span className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Last Update : {toIndianTime(coin?.market_data.last_updated)}</span>
+                <span className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 flex flex-wrap gap-1">
+                    <span>Last Update : </span>
+                    <span>{toIndianTime(coin?.market_data.last_updated)}</span>
+                </span>
                 <span>{chartDays.map((day) => (
                     <button type="button" className={`cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ${(day.value === days) ? "bg-gray-900" : ""}`}
                         key={day.value}

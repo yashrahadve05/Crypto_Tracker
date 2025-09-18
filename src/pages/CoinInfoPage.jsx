@@ -68,8 +68,12 @@ const CoinInfoPage = () => {
 
     const Change_24H = coin?.market_data.price_change_percentage_24h > 0;
     const Change_30D = coin?.market_data.price_change_percentage_30d > 0;
-    const Change_ATH = coin?.market_data.ath_change_percentage[currency] > 0;
-    const Change_ATL = coin?.market_data.atl_change_percentage[currency] > 0;
+    const Change_ATH = coin?.market_data.ath_change_percentage[currency.toLowerCase()] > 0;
+    const Change_ATL = coin?.market_data.atl_change_percentage[currency.toLowerCase()] > 0;
+    console.log("Change All Time High", Change_ATL);
+    console.log("The ATL ", coin?.market_data.ath_change_percentage[currency]);
+
+
 
 
     return (
@@ -132,12 +136,12 @@ const CoinInfoPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-7/10 flex justify-center items-center">
+                <div className="w-7/10 flex justify-center items-center max-sm:w-full max-md:w-full">
                     <CoinChart coin={coin} />
                 </div>
             </div>
             <div className="!w-[95%] m-auto mt-8 mb-8">
-                <div className="w-[95%] flex flex-row gap-2 mb-3">
+                <div className="w-[95%] flex flex-row gap-2 mb-3 max-md:flex-wrap">
 
                     {/* 1 Year High */}
                     {/* <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
@@ -166,6 +170,18 @@ const CoinInfoPage = () => {
                             <span className={`text-sm tracking-wide ${Change_30D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{coin?.market_data.price_change_percentage_30d.toFixed(2)} %</span>
                         </div>
                     </div> */}
+
+                    {/* Fully Diluted Valuation */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">Fully Diluted <br /> Valuation</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto ">
+                                {symbol} {numberWithCommas(coin?.market_data.fully_diluted_valuation[currency.toLowerCase()]?.toString().slice(0, -7) || "N/A")} Cr.
+                            </span>
+                        </div>
+                    </div>
 
                     {/* All Time High */}
                     <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
@@ -196,8 +212,49 @@ const CoinInfoPage = () => {
                             </span>
                         </div>
                     </div>
+
+
                 </div>
-                <span className="flex flex-row gap-1 border-2 border-slate-600 rounded-md p-4 font-medium bg-slate-800 w-[95%] text-left">Description : {parse(coin?.description?.en || "No description available.")}
+                <div className="w-[95%] flex flex-row gap-2 mb-3 max-md:flex-wrap">
+                    {/* Circulating Supply */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">Circulating <br /> Supply</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto ">
+                                {symbol} {numberWithCommas(coin?.market_data.circulating_supply || "N/A")}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Maximum Supply */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">Max. Supply</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto ">
+                                {symbol} {numberWithCommas(coin?.market_data.max_supply || "N/A")}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Total Supply */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">Total Supply</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto ">
+                                {symbol} {numberWithCommas(coin?.market_data.total_supply || "N/A")}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <span className="flex flex-col gap-1 border-2 border-slate-600 rounded-md p-4 font-medium bg-slate-800 w-[95%] text-left">
+                    <span className="inline-block font-semibold w-fit">About :</span>
+                    <span>{parse(coin?.description?.en || "No description available.")}</span>
                 </span>
             </div>
         </div>
