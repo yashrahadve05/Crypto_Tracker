@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import banner2 from "../assets/banner2.jpg";
 import AliceCarousel from "react-alice-carousel";
 import { useEffect } from "react";

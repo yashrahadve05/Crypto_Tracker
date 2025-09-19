@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CryptoState } from "../context/CryptoContextProvider";
 import axios from "axios";
@@ -8,7 +8,7 @@ import parse from 'html-react-parser';
 
 export function numberWithCommas(x) {
     // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // US Standard
-    return x.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,") // Indian Standard
+    return Math.floor(x).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,") // Indian Standard
 }
 
 export function toIndianTime(Time) {
@@ -223,7 +223,7 @@ const CoinInfoPage = () => {
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-lg text-center m-auto ">
-                                {symbol} {numberWithCommas(coin?.market_data.circulating_supply || "N/A")}
+                                {numberWithCommas(coin?.market_data.circulating_supply || "N/A")}
                             </span>
                         </div>
                     </div>
@@ -235,7 +235,7 @@ const CoinInfoPage = () => {
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-lg text-center m-auto ">
-                                {symbol} {numberWithCommas(coin?.market_data.max_supply || "N/A")}
+                                {numberWithCommas(coin?.market_data.max_supply || "N/A")}
                             </span>
                         </div>
                     </div>
@@ -247,7 +247,7 @@ const CoinInfoPage = () => {
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-lg text-center m-auto ">
-                                {symbol} {numberWithCommas(coin?.market_data.total_supply || "N/A")}
+                                {numberWithCommas(coin?.market_data.total_supply || "N/A")}
                             </span>
                         </div>
                     </div>

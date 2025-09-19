@@ -6,6 +6,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import CoinPage from "./pages/CoinPage";
 import CoinInfoPage from './pages/CoinInfoPage';
+import NavBar from './components/NavBar';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
     <CryptoContextProvider>
       <BrowserRouter>
       <div>
-        <Header />
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/coins/:id" element={<CoinInfoPage />} />

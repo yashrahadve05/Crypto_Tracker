@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LinearProgress } from '@mui/material';
+import { createTheme, LinearProgress, Pagination, ThemeProvider } from '@mui/material';
 import { CryptoState } from "../context/CryptoContextProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -40,6 +40,15 @@ const CoinTable = (props) => {
         );
     }
 
+    const darkTheme = createTheme({
+        palette: {
+            mode: "dark",
+            primary: {
+                main: "#fff",
+            }
+        }
+    })
+
     if (loading) return (
         <div>
             <LinearProgress />
@@ -62,7 +71,8 @@ const CoinTable = (props) => {
     )
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg pb-6">
+        <ThemeProvider theme={darkTheme}>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg pb-0">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md overflow-hidden">
                 <thead className="text-md text-gray-900 uppercase bg-blue-800">
                     <tr>
@@ -81,7 +91,7 @@ const CoinTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {handleSearch().map((coin) => {
+                    {handleSearch().slice((page-1)*10, (page-1)*10 + 10).map((coin) => {
                         const profit = coin.price_change_percentage_24h > 0;
 
                         return (
@@ -107,7 +117,18 @@ const CoinTable = (props) => {
                     })}
                 </tbody>
             </table>
+
+            {/* Pagination of the Table */}
+            <Pagination
+                className="p-5 w-full flex justify-center bg-zinc-700"
+                count={(handleSearch()?.length / 10).toFixed(0)}
+                onChange={(_,value) => {
+                    setPage(value);
+                    window.scroll(0, 350)
+                }}
+            />
         </div>
+        </ThemeProvider>
     );
 }
 
