@@ -1,35 +1,17 @@
 'use client'
-
 import { useState } from 'react'
 import {
     Dialog,
     DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Popover,
-    PopoverButton,
-    PopoverGroup,
-    PopoverPanel,
 } from '@headlessui/react'
 import {
-    ArrowPathIcon,
     Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { createTheme, MenuItem, Select, ThemeProvider } from '@mui/material'
 import { CryptoState } from "../context/CryptoContextProvider";
 import NavLogo from "../assets/NavLogoPNG.png"
 import { useNavigate } from 'react-router-dom'
-
-
-
-
 
 
 const NavBar = () => {
@@ -52,10 +34,9 @@ const NavBar = () => {
             <header className="bg-white dark:bg-gray-900">
                 <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8">
                     <div className="flex lg:flex-1">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <span className="-m-1.5 p-1.5">
                             <img className="cursor-pointer" onClick={() => navigate("/")} src={NavLogo} alt="Nav Logo" width={120} />
-
-                        </a>
+                        </span>
                     </div>
                     <div className="flex lg:hidden">
                         <button
@@ -67,17 +48,28 @@ const NavBar = () => {
                             <Bars3Icon aria-hidden="true" className="size-6" />
                         </button>
                     </div>
-                    <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                        <div>
-                            <a className='' href="">Home</a>
-                        </div>
-                        <div>
-                            <a href="">News</a>
-                        </div>
-                        <div>
-                            <a href="">About</a>
-                        </div>
-                    </PopoverGroup>
+                    {/* <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+                        <Popover className="relative">
+                            <span className="text-sm/6 font-semibold text-white">
+                                Home
+                            </span>
+                        </Popover>
+                        <Popover className="relative">
+                            <span className="text-sm/6 font-semibold text-white">
+                                News
+                            </span>
+                        </Popover>
+                        <Popover className="relative">
+                            <span className="text-sm/6 font-semibold text-white">
+                                Exchanges
+                            </span>
+                        </Popover>
+                        <Popover className="relative">
+                            <span className="text-sm/6 font-semibold text-white">
+                                About
+                            </span>
+                        </Popover>
+                    </PopoverGroup> */}
                     <div className="hidden text-white border-white lg:flex lg:flex-1 lg:justify-end">
                         <Select
                             className='text-white'
@@ -118,6 +110,26 @@ const NavBar = () => {
                             <div className="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
                                 <div className="space-y-2 py-6">
                                     {/* Mobile Navigation Items */}
+                                    {/* <Popover className="relative">
+                                        <span className="text-sm/6 font-semibold text-white">
+                                            Home
+                                        </span>
+                                    </Popover>
+                                    <Popover className="relative">
+                                        <span className="text-sm/6 font-semibold text-white">
+                                            News
+                                        </span>
+                                    </Popover>
+                                    <Popover className="relative">
+                                        <span className="text-sm/6 font-semibold text-white">
+                                            Exchanges
+                                        </span>
+                                    </Popover>
+                                    <Popover className="relative">
+                                        <span className="text-sm/6 font-semibold text-white">
+                                            About
+                                        </span>
+                                    </Popover> */}
                                 </div>
                                 <div className="py-6">
                                     <Select

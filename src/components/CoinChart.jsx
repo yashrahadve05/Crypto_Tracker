@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { CryptoState } from "../context/CryptoContextProvider";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import {
@@ -13,6 +12,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import { CryptoState } from "../context/CryptoContextProvider";
 
 // Register components once
 ChartJS.register(

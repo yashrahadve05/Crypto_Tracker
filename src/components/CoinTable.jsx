@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { createTheme, LinearProgress, Pagination, ThemeProvider } from '@mui/material';
-import { CryptoState } from "../context/CryptoContextProvider";
 import axios from "axios";
+import { createTheme, LinearProgress, Pagination, ThemeProvider } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { CryptoState } from "../context/CryptoContextProvider";
 
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

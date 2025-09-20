@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CryptoState } from "../context/CryptoContextProvider";
-import axios from "axios";
 import { LinearProgress } from "@mui/material";
-import CoinChart from "../components/CoinChart";
+import axios from "axios";
 import parse from 'html-react-parser';
+import { CryptoState } from "../context/CryptoContextProvider";
+import CoinChart from "../components/CoinChart";
 
 export function numberWithCommas(x) {
     // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // US Standard
@@ -46,9 +46,9 @@ const CoinInfoPage = () => {
     }, [currency]);
 
     if (loading && !coin) return (
-        <div>
+        <div className="h-full bg-[#121212]">
             <LinearProgress />
-            <div className="flex bg-[#121212] p-2 justify-center items-center h-[300px]">
+            <div className="flex p-2 justify-center items-center !h-[100%]">
                 <div className="text-center">
                     <div
                         className="w-24 h-24 border-4 border-t-[#00e600] border-gray-700 rounded-full animate-spin mx-auto"
@@ -141,7 +141,7 @@ const CoinInfoPage = () => {
                 </div>
             </div>
             <div className="!w-[95%] m-auto mt-8 mb-8">
-                <div className="w-[95%] flex flex-row gap-2 mb-3 max-md:flex-wrap">
+                <div className=" flex flex-row gap-2 mb-2 max-md:flex-wrap">
 
                     {/* 1 Year High */}
                     {/* <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
@@ -215,7 +215,7 @@ const CoinInfoPage = () => {
 
 
                 </div>
-                <div className="w-[95%] flex flex-row gap-2 mb-3 max-md:flex-wrap">
+                <div className=" flex flex-row gap-2 mb-3 max-md:flex-wrap lg:w-[100%]">
                     {/* Circulating Supply */}
                     <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
                         <div className="flex flex-col gap-1">
@@ -252,9 +252,19 @@ const CoinInfoPage = () => {
                         </div>
                     </div>
                 </div>
-                <span className="flex flex-col gap-1 border-2 border-slate-600 rounded-md p-4 font-medium bg-slate-800 w-[95%] text-left">
-                    <span className="inline-block font-semibold w-fit">About :</span>
-                    <span>{parse(coin?.description?.en || "No description available.")}</span>
+                <span className="flex flex-col gap-1 border-2 border-slate-600 rounded-md p-4 font-medium bg-slate-800 text-left">
+                    <div>
+                        <span className="inline-block font-semibold w-fit pr-1.5">About : </span>
+                        <span>{parse(coin?.description?.en || "No description available.")}</span>
+                    </div>
+                    <div>
+                        <span className="flex flex-row flex-wrap gap-1 items-center">
+                        <span className="inline-block font-semibold w-fit pr-1.5">Categories : </span>
+                                {coin?.categories?.map((cat, index) => (
+                                    <span className="bg-slate-700 p-1 border-2 border-slate-600 rounded-sm" key={index}>{cat}</span>
+                                )) || "No Catogery Available"}
+                        </span>
+                    </div>
                 </span>
             </div>
         </div>

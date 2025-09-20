@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.14.1",
     "@headlessui/react": "^2.2.8",
     "@heroicons/react": "^2.2.0",
-    "@mui/material": "^7.3.1",
+    "@mui/material": "^7.3.2",
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.11.0",
     "chart.js": "^4.5.0",
