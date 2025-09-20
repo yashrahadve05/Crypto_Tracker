@@ -67,17 +67,18 @@ const CoinInfoPage = () => {
     )
 
     const Change_24H = coin?.market_data.price_change_percentage_24h > 0;
-    const Change_30D = coin?.market_data.price_change_percentage_30d > 0;
     const Change_ATH = coin?.market_data.ath_change_percentage[currency.toLowerCase()] > 0;
     const Change_ATL = coin?.market_data.atl_change_percentage[currency.toLowerCase()] > 0;
-    console.log("Change All Time High", Change_ATL);
-    console.log("The ATL ", coin?.market_data.ath_change_percentage[currency]);
+    const Price_Change_7D = coin?.market_data.price_change_percentage_7d_in_currency[currency.toLowerCase()] > 0;
+    const Price_Change_30D = coin?.market_data.price_change_percentage_30d_in_currency[currency.toLowerCase()] > 0;
+    const Price_Change_60D = coin?.market_data.price_change_percentage_60d_in_currency[currency.toLowerCase()] > 0;
+    const Price_Change_1y = coin?.market_data.price_change_percentage_1y_in_currency[currency.toLowerCase()] > 0;
 
 
 
 
     return (
-        <div className="w-full flex flex-col justify-center mt-7">
+        <div className="w-full flex flex-col justify-center mt-20">
             <div className="flex lg:flex-row lg:justify-center items-center w-[98%] md:flex-col md:justify-center max-sm:flex-col max-sm:justify-center">
                 <div className="xl:w-3/12 xl:border-r-2 border-gray-500 pt-0 pb-4 md:border-r-0 max-sm:border-r-0 md:w-[90%] max-sm:w-[90%]">
                     <div className="flex flex-col items-right gap-5 md:w-full">
@@ -130,8 +131,8 @@ const CoinInfoPage = () => {
 
                             </div>
                             <div className="flex flex-col gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
-                                <span className="text-center m-auto font-semibold">30D Change</span>
-                                <span className={`tracking-wide ${Change_30D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{coin?.market_data.price_change_percentage_30d.toFixed(4)} %</span>
+                                <span className="text-center m-auto font-semibold">7D Change</span>
+                                <span className={`tracking-wide ${Price_Change_7D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{coin?.market_data.price_change_percentage_7d_in_currency[currency.toLowerCase()].toFixed(4)} %</span>
                             </div>
                         </div>
                     </div>
@@ -142,35 +143,6 @@ const CoinInfoPage = () => {
             </div>
             <div className="!w-[95%] m-auto mt-8 mb-8">
                 <div className=" flex flex-row gap-2 mb-2 max-md:flex-wrap">
-
-                    {/* 1 Year High */}
-                    {/* <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lg text-center m-auto font-semibold">1Y High</span>
-                            <span className="text-sm">{toIndianTime(coin?.market_data.ath_date[currency.toLowerCase()])}</span>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lg text-center m-auto ">
-                                {symbol} {numberWithCommas(coin?.market_data.atl[currency.toLowerCase()]?.toString() || "N/A")}
-                            </span>
-                            <span className={`text-sm tracking-wide ${Change_30D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{coin?.market_data.price_change_percentage_30d.toFixed(2)} %</span>
-                        </div>
-                    </div> */}
-
-                    {/* 1 Year Low */}
-                    {/* <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lg text-center m-auto font-semibold">All Time Low</span>
-                            <span className="text-sm">{toIndianTime(coin?.market_data.ath_date[currency.toLowerCase()])}</span>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lg text-center m-auto ">
-                                {symbol} {numberWithCommas(coin?.market_data.atl[currency.toLowerCase()]?.toString() || "N/A")}
-                            </span>
-                            <span className={`text-sm tracking-wide ${Change_30D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{coin?.market_data.price_change_percentage_30d.toFixed(2)} %</span>
-                        </div>
-                    </div> */}
-
                     {/* Fully Diluted Valuation */}
                     <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
                         <div className="flex flex-col gap-1">
@@ -212,8 +184,41 @@ const CoinInfoPage = () => {
                             </span>
                         </div>
                     </div>
+                </div>
+                <div className=" flex flex-row gap-2 mb-2 max-md:flex-wrap">
+                    {/* 30 Days Price Change % */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">30D Price <br /> Change</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className={`text-lg tracking-wide ${Price_Change_30D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>
+                                {Change_ATL && "+"}{ coin?.market_data.price_change_percentage_30d_in_currency[currency.toLowerCase()]?.toFixed(2)}%
+                            </span>
+                        </div>
+                    </div>
 
+                    {/* 60 Days Price Change % */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">60D Price <br /> Change</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className={`text-lg tracking-wide ${Price_Change_60D ? "text-[#00FF00]" : "text-[#FF0000]"}`}>{Change_ATH && "+"} {coin?.market_data?.price_change_percentage_60d_in_currency[currency.toLowerCase()]?.toFixed(2)}%</span>
+                        </div>
+                    </div>
 
+                    {/* 1 Year Price Change % */}
+                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-slate-600 rounded-md p-2 font-medium bg-slate-800 w-[95%] text-center">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg text-center m-auto font-semibold">1 Year Price <br /> Change</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className={`text-lg tracking-wide ${Price_Change_1y ? "text-[#00FF00]" : "text-[#FF0000]"}`}>
+                                {Change_ATL && "+"}{coin?.market_data.price_change_percentage_1y_in_currency[currency.toLowerCase()]?.toFixed(2)}%
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div className=" flex flex-row gap-2 mb-3 max-md:flex-wrap lg:w-[100%]">
                     {/* Circulating Supply */}

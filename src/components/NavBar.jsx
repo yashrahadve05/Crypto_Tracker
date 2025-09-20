@@ -31,7 +31,7 @@ const NavBar = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <header className="bg-white dark:bg-gray-900">
+            <header className="bg-white dark:bg-gray-900 fixed top-0 w-full h-20 z-50">
                 <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8">
                     <div className="flex lg:flex-1">
                         <span className="-m-1.5 p-1.5">

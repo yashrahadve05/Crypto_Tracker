@@ -65,6 +65,7 @@ const Banner = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 padding: "1.5rem",
+                marginTop: 80
             }}
         >
             <div className="flex flex-col gap-8 py-8 justify-around">
