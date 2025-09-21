@@ -46,7 +46,7 @@ const CoinInfoPage = () => {
     }, [currency]);
 
     if (loading && !coin) return (
-        <div className="h-full bg-[#121212]">
+        <div className="h-full bg-[#121212] mt-20">
             <LinearProgress />
             <div className="flex p-2 justify-center items-center !h-[100%]">
                 <div className="text-center">

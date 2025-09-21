@@ -126,6 +126,15 @@ const CoinTable = (props) => {
                     setPage(value);
                     window.scroll(0, 350)
                 }}
+                sx={{
+                            "& .MuiPaginationItem-root": {
+                                color: "#FACC15", // change page number color
+                            },
+                            "& .Mui-selected": {
+                                backgroundColor: "#FBBF24", // optional: change selected page background
+                                color: "#000000", // optional: selected page text color
+                            },
+                        }}
             />
         </div>
         </ThemeProvider>
