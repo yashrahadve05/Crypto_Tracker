@@ -44,7 +44,7 @@ const CoinPage = () => {
                     <CoinTable search={search} />
                 </div>
                 <div className="w-full">
-                    <h2 className="bg-gray-800 my-3 text-3xl py-8 font-bold self-start text-left">Get the latest News and Trends about Crypto Currency</h2>
+                    <h2 className="bg-gray-800 my-3 text-3xl py-6 font-bold self-start text-left p-2 rounded-lg">Get the latest News and Trends about Crypto Currency</h2>
                     <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
                         {newsData && newsData.slice((page - 1) * 12, (page - 1) * 12 + 12).map((articles, index) => (
                             <NewsContainer

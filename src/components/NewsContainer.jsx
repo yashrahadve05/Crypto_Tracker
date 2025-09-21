@@ -31,8 +31,8 @@ const NewsContainer = ({ author, title, description, imageUrl, url, publishedAt,
                     Processing…
                 </div>
             ) : (
-                <div className="w-fit overflow-hidden shadow-lg border-2 border-gray-800 rounded-lg">
-                    <img className="h-[220px] w-[400px]" src={imageUrl} alt="Image Not Available" />
+                <div className="w-full overflow-hidden shadow-lg border-2 border-gray-800 rounded-lg">
+                    <img className="h-[220px] w-full" src={imageUrl} alt="Image Not Available" />
                     <span className="flex flex-row gap-1 mt-2 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 mr-2 mb-0">
                         <p>Published At :</p>
                         <span>{" "}{toIndianTime(publishedAt)}</span>
