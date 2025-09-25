@@ -45,8 +45,8 @@ const CoinChart = ({ coin }) => {
 
 
     const { currency } = CryptoState();
-    const BoolChart = historicChart ? "HistoricChart Mil gaya" : "HistoricChart nahi mila";
-    console.log(BoolChart);
+    // const BoolChart = historicChart ? "HistoricChart Mil gaya" : "HistoricChart nahi mila";
+    // console.log(BoolChart);
 
     const chartDays = [
         {
