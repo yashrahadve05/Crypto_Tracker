@@ -2,16 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export function toIndianTime(Time) {
-    // return new Date(Time).toLocaleDateString("en-US", {
-    //     month: "short",
-    //     day: "numeric",
-    //     year: "numeric",
-    //     timeZone: "Asia/Kolkata"
-    // });
-    // Convert seconds to milliseconds
     const date = new Date(Time * 1000);
-
-    // Array of month names
+    
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

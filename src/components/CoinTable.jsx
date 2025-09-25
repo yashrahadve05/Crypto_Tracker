@@ -128,12 +128,12 @@ const CoinTable = (props) => {
                 }}
                 sx={{
                             "& .MuiPaginationItem-root": {
-                                color: "#FACC15", // change page number color
+                                color: "#FACC15",
                             },
                             "& .Mui-selected": {
-                                backgroundColor: "#FBBF24", // optional: change selected page background
-                                color: "#000000", // optional: selected page text color
-                            },
+                                backgroundColor: "#ffffff29",
+                                    color: "#FACC15",
+                                },
                         }}
             />
         </div>

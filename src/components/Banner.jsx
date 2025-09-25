@@ -4,7 +4,13 @@ import AliceCarousel from "react-alice-carousel";
 import banner2 from "../assets/banner2.jpg";
 import { Link } from "react-router-dom";
 import { CryptoState } from "../context/CryptoContextProvider";
+import { numberWithCommas } from "./CoinTable";
 
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 
 const Banner = () => {
 
@@ -22,41 +28,6 @@ const Banner = () => {
         fetchTrandingCoins();
     }, [currency])
 
-    const items = tranding.map((coin, index) => {
-        return (
-            <Link
-                className="flex flex-col items-center cursor-pointer gap-2 color-white uppercase"
-                to={`/coin/${coin.item.id}`}
-                key={index}
-            >
-                <img
-                    src={coin?.item.thumb}
-                    alt={coin?.item.name}
-                    style={{ marginBottom: 10, height: 80, width: 80 }}
-                />
-                <span className="uppercase font-bold text-sm">
-                    {coin.item.symbol}
-                    &nbsp;
-                    <span className={coin.item.price_change_percentage_24h > 0 ? "text-green-500" : "text-red-500"}>
-                        {coin.item.price_change_percentage_24h}%
-                    </span>
-                </span>
-                <span className="text-sm font-light">
-                    {symbol} {coin.item.price_btc.toFixed(6)}
-                </span>
-            </Link>
-        );
-    })
-
-
-    const responsive = {
-        0: {
-            items: 2,
-        },
-        512: {
-            items: 4,
-        }
-    };
 
     return (
         <div
@@ -73,21 +44,57 @@ const Banner = () => {
                     <h1 className="text-white text-5xl font-extrabold mb-4 drop-shadow-lg">Crypto Tracker</h1>
                     <p className="text-slate-300 text-lg font-light drop-shadow-md" style={{ paddingTop: "1rem" }}>Get all the Info regarding your favorite Crypto Currency</p>
                 </div>
-                <div className="h-[50%]">
-                    {/* <AliceCarousel
-                        autoPlay
-                        infinite
-                        autoPlayInterval={1000}
-                        animationDuration={1500}
-                        disableDotsControls
-                        disableButtonsControls
-                        responsive={responsive}
-                        mouseTracking
-                        items={items}
-                    /> */}
+                <div className="h-[50%] max-w-[75%] mx-auto max-md:max-w-[90%]">
+                    <Swiper
+                        spaceBetween={20}
+                        initialSlide={0}
+                        slidesPerView={6}
+                        loop={true}
+                        autoplay={{ delay: 1000, disableOnInteraction: false, waitForTransition: true }}
+                        speed={1500}
+                        modules={[Autoplay]}
+                        breakpoints={{
+                            0: {
+                                slidesPerView: 2,
+                            },
+                            512: {
+                                slidesPerView: 4,
+                            },
+                            768: {
+                                slidesPerView: 4,
+                            }
+                        }}
+                    >
+                        {tranding.map((coin, index) => (
+                            <SwiperSlide key={index}>
+                                <Link
+                                    className="flex flex-col items-center cursor-pointer color-white uppercase"
+                                    to={`/coins/${coin.item.id}`}
+                                >
+                                    <img
+                                        src={coin?.item.large}
+                                        alt={coin?.item.name}
+                                        style={{ marginBottom: 5, height: 80, width: 80 }}
+                                    />
+                                    <span className="uppercase font-normal text-sm">
+                                        {coin.item.symbol}
+                                        &nbsp;
+                                        <span className={coin?.item.data.price_change_percentage_24h[currency.toLowerCase()] > 0 ? "text-green-500" : "text-red-500"}>
+                                            {coin?.item.data.price_change_percentage_24h[currency.toLowerCase()].toFixed(2)}%
+                                        </span>
+                                    </span>
+                                    <span className="text-lg font-semibold">
+                                        {"$"} {numberWithCommas(coin?.item.data.price.toFixed(2))}
+                                    </span>
+                                </Link>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
+
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
