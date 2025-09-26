@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import AliceCarousel from "react-alice-carousel";
 import banner2 from "../assets/banner2.jpg";
 import { Link } from "react-router-dom";
 import { CryptoState } from "../context/CryptoContextProvider";
