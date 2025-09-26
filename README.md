@@ -1,12 +1,54 @@
-# React + Vite
+# Crypto Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/View-Live-blue?logo=vercel)](https://crypto-tracker-alpha-bay.vercel.app/)
+[![GitHub](https://img.shields.io/badge/Source-GitHub-black?logo=github)](https://github.com/yashrahadve05/Crypto_Tracker)
+[![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Crypto Tracker is a web application that tracks real-time cryptocurrency prices, market capitalization, and daily percent changes for a wide range of tokens. The app features a clean and responsive UI, fast search, and currency selection so users can quickly track the crypto market's pulse.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Real-time cryptocurrency prices & data
+- Market capitalization & daily percentage changes
+- Currency filter to view prices in your preferred currency
+- Smart search for quick coin lookup
+- Trending coins carousel
+- Clean, responsive interface for all devices
+
+---
+
+## Tech Stack
+
+- **Frontend:** React + Vite
+- **Styling:** TailwindCSS, Material UI
+- **API:** CoinGecko, NewsAPI
+- **State Management:** React Context API
+- **Deployment:** Vercel
+
+---
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yashrahadve05/Crypto_Tracker.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd Crypto_Tracker
+   ```
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and go to `http://localhost:5173` to view the app.
+---
