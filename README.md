@@ -11,7 +11,6 @@ CryptoTracker is a fast, responsive cryptocurrency dashboard for tracking **top 
 ## 🔗 Live Demo
 
 - **App**: [Live Demo](https://crypto-tracker-alpha-bay.vercel.app/)
-- **Repository**: [GitHub](https://github.com/yashrahadve05/Crypto_Tracker)
 
 ---
 
@@ -207,13 +206,13 @@ npm run preview
 
 ## 🖼️ Screenshots
 
-![Home Page](public/Home_Screen.png)
+![Home Page](client/public/Home_Screen.png)
 
-![Coin Table](public/Coin_Chart.png)
+![Coin Table](client/public/Coin_Chart.png)
 
-![Coin Info Page](public/Coin_Info.png)
+![Coin Info Page](client/public/Coin_Info.png)
 
-![News Details](public/News_Details.png)
+![News Details](client/public/News_Details.png)
 
 ```text
 TODO (recommended for recruiters):
@@ -255,7 +254,6 @@ Built **CryptoTracker**, a React + Vite single-page application that surfaces re
 
 **Yash Kumar Rahadve**  
 
-- GitHub: [yashrahadve05](https://github.com/yashrahadve05)
 - LinkedIn: [yashrahadve05](https://www.linkedin.com/in/yashrahadve/)
 - X: [@yashrahadve05](https://x.com/Yashrahadve05)
 - Email: [yashrahadve05@gmail.com](mailto:yashrahadve05@gmail.com)
